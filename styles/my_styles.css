@@ -1,0 +1,601 @@
+/* Ian Cooley */
+/* Fun with Sliders */
+/* Stylesheet */
+@font-face {
+  font-family: 'blackjackregular';
+  src: url("fonts/black_jack-webfont.eot");
+  src: url("fonts/black_jack-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/black_jack-webfont.woff") format("woff"), url("fonts/black_jack-webfont.ttf") format("truetype"), url("fonts/black_jack-webfont.svg#blackjackregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+html body {
+  background: url("../images/stressed_linen.png");
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: default;
+  /* TITLES and DESCRIPTIONS */
+  /********* MAIN HEADER *******************************************************/
+  /********* SLIDER #1 *********************************************************/
+  /********* SLIDER #2 *********************************************************/
+  /********* SLIDER #3 *********************************************************/ }
+  html body .sliderTitle {
+    font-family: "blackjackregular", cursive;
+    text-align: center;
+    color: white;
+    text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.8);
+    font-weight: lighter; }
+  html body .description {
+    text-align: center;
+    color: white; }
+  html body #MainHeader {
+    margin-top: 50px;
+    padding-bottom: 40px;
+    border-bottom: 2px dotted #1a1a1a; }
+    html body #MainHeader #title {
+      font-family: "blackjackregular", cursive;
+      font-size: 450%;
+      text-align: center;
+      color: white;
+      text-shadow: 10px 10px 12px rgba(0, 0, 0, 0.8); }
+    html body #MainHeader p {
+      font-size: 125%;
+      text-align: center;
+      color: white; }
+      html body #MainHeader p a {
+        color: #00ef25;
+        text-shadow: 1px 0px 10px #00ef25; }
+  html body #Header1 {
+    position: relative;
+    border-top: 2px dotted #262626;
+    padding-top: 30px;
+    margin-bottom: 0px; }
+  html body #Slider1 {
+    position: relative;
+    height: 100px;
+    /* Image Positioning Algorithm: */ }
+    html body #Slider1 .slot1 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: -300px;
+      z-index: -9; }
+    html body #Slider1 .slot11 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: 0px;
+      z-index: -1; }
+    html body #Slider1 .slot2 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: -270px;
+      z-index: -8; }
+    html body #Slider1 .slot12 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: 30px;
+      z-index: -2; }
+    html body #Slider1 .slot3 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: -240px;
+      z-index: -7; }
+    html body #Slider1 .slot13 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: 60px;
+      z-index: -3; }
+    html body #Slider1 .slot4 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: -210px;
+      z-index: -6; }
+    html body #Slider1 .slot14 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: 90px;
+      z-index: -4; }
+    html body #Slider1 .slot5 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: -180px;
+      z-index: -5; }
+    html body #Slider1 .slot15 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: 120px;
+      z-index: -5; }
+    html body #Slider1 .slot6 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: -150px;
+      z-index: -4; }
+    html body #Slider1 .slot16 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: 150px;
+      z-index: -6; }
+    html body #Slider1 .slot7 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: -120px;
+      z-index: -3; }
+    html body #Slider1 .slot17 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: 180px;
+      z-index: -7; }
+    html body #Slider1 .slot8 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: -90px;
+      z-index: -2; }
+    html body #Slider1 .slot18 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: 210px;
+      z-index: -8; }
+    html body #Slider1 .slot9 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: -60px;
+      z-index: -1; }
+    html body #Slider1 .slot19 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -30px;
+      margin-left: 240px;
+      z-index: -9; }
+    html body #Slider1 .slot10 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -40px;
+      margin-top: -40px;
+      z-index: 0;
+      height: 80px;
+      width: 80px; }
+  html body #Arrows1 {
+    border-bottom: 2px dotted #1a1a1a; }
+    html body #Arrows1 h3 {
+      margin-top: -3px;
+      text-align: center;
+      color: #9d9d9d;
+      cursor: default;
+      padding-bottom: 30px; }
+      html body #Arrows1 h3 .spacer {
+        visibility: hidden; }
+  html body #Header2 {
+    border-top: 2px dotted #262626;
+    padding-top: 30px;
+    margin-bottom: 0px; }
+  html body #Slider2 {
+    -webkit-perspective: 100px;
+    perspective: 100px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    position: relative;
+    height: 100px; }
+    html body #Slider2 .slot1 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(30deg);
+      transform: rotateY(30deg);
+      margin-top: -19px;
+      margin-left: -230px;
+      z-index: -9;
+      height: 38px;
+      width: 38px; }
+    html body #Slider2 .slot11 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(-30deg);
+      transform: rotateY(-30deg);
+      margin-top: -35px;
+      margin-left: 0px;
+      z-index: -1;
+      height: 70px;
+      width: 70px; }
+    html body #Slider2 .slot2 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(30deg);
+      transform: rotateY(30deg);
+      margin-top: -21px;
+      margin-left: -210px;
+      z-index: -8;
+      height: 42px;
+      width: 42px; }
+    html body #Slider2 .slot12 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(-30deg);
+      transform: rotateY(-30deg);
+      margin-top: -33px;
+      margin-left: 20px;
+      z-index: -2;
+      height: 66px;
+      width: 66px; }
+    html body #Slider2 .slot3 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(30deg);
+      transform: rotateY(30deg);
+      margin-top: -23px;
+      margin-left: -190px;
+      z-index: -7;
+      height: 46px;
+      width: 46px; }
+    html body #Slider2 .slot13 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(-30deg);
+      transform: rotateY(-30deg);
+      margin-top: -31px;
+      margin-left: 40px;
+      z-index: -3;
+      height: 62px;
+      width: 62px; }
+    html body #Slider2 .slot4 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(30deg);
+      transform: rotateY(30deg);
+      margin-top: -25px;
+      margin-left: -170px;
+      z-index: -6;
+      height: 50px;
+      width: 50px; }
+    html body #Slider2 .slot14 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(-30deg);
+      transform: rotateY(-30deg);
+      margin-top: -29px;
+      margin-left: 60px;
+      z-index: -4;
+      height: 58px;
+      width: 58px; }
+    html body #Slider2 .slot5 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(30deg);
+      transform: rotateY(30deg);
+      margin-top: -27px;
+      margin-left: -150px;
+      z-index: -5;
+      height: 54px;
+      width: 54px; }
+    html body #Slider2 .slot15 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(-30deg);
+      transform: rotateY(-30deg);
+      margin-top: -27px;
+      margin-left: 80px;
+      z-index: -5;
+      height: 54px;
+      width: 54px; }
+    html body #Slider2 .slot6 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(30deg);
+      transform: rotateY(30deg);
+      margin-top: -29px;
+      margin-left: -130px;
+      z-index: -4;
+      height: 58px;
+      width: 58px; }
+    html body #Slider2 .slot16 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(-30deg);
+      transform: rotateY(-30deg);
+      margin-top: -25px;
+      margin-left: 100px;
+      z-index: -6;
+      height: 50px;
+      width: 50px; }
+    html body #Slider2 .slot7 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(30deg);
+      transform: rotateY(30deg);
+      margin-top: -31px;
+      margin-left: -110px;
+      z-index: -3;
+      height: 62px;
+      width: 62px; }
+    html body #Slider2 .slot17 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(-30deg);
+      transform: rotateY(-30deg);
+      margin-top: -23px;
+      margin-left: 120px;
+      z-index: -7;
+      height: 46px;
+      width: 46px; }
+    html body #Slider2 .slot8 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(30deg);
+      transform: rotateY(30deg);
+      margin-top: -33px;
+      margin-left: -90px;
+      z-index: -2;
+      height: 66px;
+      width: 66px; }
+    html body #Slider2 .slot18 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(-30deg);
+      transform: rotateY(-30deg);
+      margin-top: -21px;
+      margin-left: 140px;
+      z-index: -8;
+      height: 42px;
+      width: 42px; }
+    html body #Slider2 .slot9 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(30deg);
+      transform: rotateY(30deg);
+      margin-top: -35px;
+      margin-left: -70px;
+      z-index: -1;
+      height: 70px;
+      width: 70px; }
+    html body #Slider2 .slot19 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      -webkit-transform: rotateY(-30deg);
+      transform: rotateY(-30deg);
+      margin-top: -19px;
+      margin-left: 160px;
+      z-index: -9;
+      height: 38px;
+      width: 38px; }
+    html body #Slider2 .slot10 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transition-duration: 0.2s;
+      transition-duration: 0.2s;
+      margin-left: -45px;
+      margin-top: -45px;
+      z-index: 0;
+      -webkit-transform: translateZ(5px);
+      transform: translateZ(5px);
+      height: 90px;
+      width: 90px; }
+  html body #Spacer2 {
+    height: 60px;
+    border-bottom: 2px dotted #1a1a1a; }
+  html body #Header3 {
+    border-top: 2px dotted #262626;
+    padding-top: 30px;
+    margin-bottom: 0px; }
+    html body #Header3 a {
+      color: #00ef25;
+      text-shadow: 1px 0px 10px #00ef25; }
+    html body #Header3 a:hover {
+      cursor: pointer; }
+  html body #Slider3 {
+    position: relative;
+    height: 300px;
+    margin-top: 0px;
+    margin-bottom: 60px;
+    -webkit-perspective: 500px;
+    perspective: 500px;
+    -webkit-perspective-origin: top;
+    perspective-origin: top;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
+    html body #Slider3 .slot0 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(0px, 0, 0px) rotateY(0deg);
+      transform: translate3d(0px, 0, 0px) rotateY(0deg); }
+    html body #Slider3 .slot1 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(97.9642087154px, 0, -31.8305009375px) rotateY(36deg);
+      transform: translate3d(97.9642087154px, 0, -31.8305009375px) rotateY(36deg); }
+    html body #Slider3 .slot2 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(158.5094193825px, 0, -115.1638342709px) rotateY(72deg);
+      transform: translate3d(158.5094193825px, 0, -115.1638342709px) rotateY(72deg); }
+    html body #Slider3 .slot3 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(158.5094193825px, 0, -218.1694990625px) rotateY(-72deg);
+      transform: translate3d(158.5094193825px, 0, -218.1694990625px) rotateY(-72deg); }
+    html body #Slider3 .slot4 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(97.9642087154px, 0, -301.5028323957px) rotateY(-36deg);
+      transform: translate3d(97.9642087154px, 0, -301.5028323957px) rotateY(-36deg); }
+    html body #Slider3 .slot5 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(0.0000000017px, 0, -333.3333333207px) rotateY(0deg);
+      transform: translate3d(0.0000000017px, 0, -333.3333333207px) rotateY(0deg); }
+    html body #Slider3 .slot6 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(-97.964208602px, 0, -301.5028317051px) rotateY(36deg);
+      transform: translate3d(-97.964208602px, 0, -301.5028317051px) rotateY(36deg); }
+    html body #Slider3 .slot7 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(-158.509415484px, 0, -218.1694787313px) rotateY(72deg);
+      transform: translate3d(-158.509415484px, 0, -218.1694787313px) rotateY(72deg); }
+    html body #Slider3 .slot8 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(-158.5093361022px, 0, -115.1634545592px) rotateY(-72deg);
+      transform: translate3d(-158.5093361022px, 0, -115.1634545592px) rotateY(-72deg); }
+    html body #Slider3 .slot9 {
+      position: absolute;
+      left: 50%;
+      top: 65%;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+      height: 90px;
+      width: 90px;
+      margin-left: -45px;
+      margin-top: -45px;
+      -webkit-transform: translate3d(-97.9629717621px, 0, -31.8254923424px) rotateY(-36deg);
+      transform: translate3d(-97.9629717621px, 0, -31.8254923424px) rotateY(-36deg); }

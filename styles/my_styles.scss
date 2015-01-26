@@ -1,0 +1,367 @@
+/* Ian Cooley */
+/* Fun with Sliders */
+/* Stylesheet */
+
+// images
+
+$background: url("../images/stressed_linen.png");
+
+// fonts
+
+@font-face {
+    font-family: 'blackjackregular';
+    src: url('fonts/black_jack-webfont.eot');
+    src: url('fonts/black_jack-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/black_jack-webfont.woff') format('woff'),
+         url('fonts/black_jack-webfont.ttf') format('truetype'),
+         url('fonts/black_jack-webfont.svg#blackjackregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+$blackjack: 'blackjackregular';
+
+// Trigonometric Functions ~ sin, cos, tan
+// developed below using taylor approximations
+// source: https://unindented.org/articles/trigonometry-in-sass/
+
+@function pow($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+@function fact($number) {
+  $value: 1;
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $value: $value * $i;
+    }
+  }
+  @return $value;
+}
+
+@function pi() {
+  @return 3.14159265359;
+}
+
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless: $angle / ($angle * 0 + 1);
+  // If the angle has 'deg' as unit, convert to radians.
+  @if $unit == deg {
+    $unitless: $unitless / 180 * pi();
+  }
+  @return $unitless;
+}
+
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 10 {
+    $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+  }
+  @return $sin;
+}
+
+@function cos($angle) {
+  $cos: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 10 {
+    $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+  }
+  @return $cos;
+}
+
+@function tan($angle) {
+  @return sin($angle) / cos($angle);
+}
+
+// styles
+
+html {
+	body {
+		background: $background;
+		
+		-webkit-user-select: none; 	// (prevents text selection)
+    	-moz-user-select: none;
+   		-ms-user-select: none;
+		cursor: default;
+		
+		/* TITLES and DESCRIPTIONS */
+		.sliderTitle {
+			font-family: $blackjack, cursive;
+			text-align: center;
+			color: white;
+			text-shadow: 5px 5px 6px hsla(0,0%,0%,0.8);
+			font-weight: lighter;
+		}
+		.description {
+			text-align: center;
+			color: white;
+		}
+		
+/********* MAIN HEADER *******************************************************/
+		#MainHeader {
+			margin-top: 50px;
+			padding-bottom: 40px;
+			border-bottom: 2px dotted hsl(0, 0%, 10%);
+			#title {
+				font-family: $blackjack, cursive;
+				font-size: 450%;
+				text-align: center;
+				color: white;
+				text-shadow: 10px 10px 12px hsla(0,0%,0%,0.8);
+			}
+			p {
+				font-size: 125%;
+				text-align: center;
+				color: white;
+				a {
+					color: #00ef25;
+          text-shadow: 1px 0px 10px #00ef25;
+				}
+			}
+		}
+/********* SLIDER #1 *********************************************************/
+//~~~~~-Header-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#Header1 {
+			position: relative;
+			border-top: 2px dotted hsl(0, 0%, 15%);
+			padding-top: 30px;
+			margin-bottom: 0px;
+		}
+//~~~~~-Slider-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#Slider1 {
+			position: relative;
+			height: 100px;
+			
+			/* Image Positioning Algorithm: */
+			//
+			//	A .slot#{i} class is created for 1 <= i <= 19. 
+			//	Each .slot#{i} is positioned with respect to #Slider1.
+			//	Each img element is initially given a .slot#{j} class
+			//	for some 5 <= j <= 14.
+			
+			// 	mixins and variables used in algorithm:
+			@mixin center() {
+				position: absolute;
+				left: 50%;
+				top: 50%;	
+			}
+			$spacer: 30px; 			// standard space between slots
+			$slot1Margin: -300px; 	// margin-left of .slot1
+			$slot11Margin: 0px; 	// margin-left of .slot11 
+			$slot1Index: -9;		// z-index of .slot1
+			$slot11Index: -1;		// z-index of .slot11
+			
+			// algorithm:
+			@for $i from 1 through 9 { //slots 1-9
+				.slot#{$i} {
+					@include center();		// each slot is centered,
+					margin-top: -$spacer;	// then offset
+					margin-left: $slot1Margin + ($i - 1) * $spacer;
+					z-index: $slot1Index + ($i - 1);
+				}
+				$j: $i + 10;
+				.slot#{$j} {	//slots 11-19
+					@include center();
+					margin-top: -$spacer;
+					margin-left: $slot11Margin + ($i - 1) * $spacer;
+					z-index: $slot11Index - ($i - 1);
+				}
+			}
+			.slot10 {	// slot10, being in the middle, is larger
+				@include center();
+				margin-left: -40px;
+				margin-top: -40px;
+				z-index: 0;
+				height: 80px;
+				width: 80px;
+				
+			}
+		}
+//~~~~~-Arrows-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#Arrows1 {
+			border-bottom: 2px dotted hsl(0, 0%, 10%);
+			h3 {
+				margin-top: -3px;
+				text-align: center;
+				color: #9d9d9d;
+				cursor: default;
+				padding-bottom: 30px;
+				.spacer {
+					visibility: hidden;
+				}
+			}
+		}
+		
+/********* SLIDER #2 *********************************************************/
+//~~~~~-Header-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#Header2 {
+			border-top: 2px dotted hsl(0, 0%, 15%);
+			padding-top: 30px;
+			margin-bottom: 0px;
+		}
+//~~~~~-Slider-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#Slider2 {
+			-webkit-perspective: 100px;
+			perspective: 100px;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			position: relative;
+			height: 100px;
+			
+			// mixins and variables used in slot styling:
+			@mixin center() {
+				position: absolute;
+				left: 50%;
+				top: 50%;	
+			}
+			@mixin transition() {
+				-webkit-transition-duration: 0.2s;
+				transition-duration: 0.2s;
+			}
+			@mixin leftRotate() {
+				-webkit-transform: rotateY(30deg);
+				transform: rotateY(30deg);
+			}
+			@mixin rightRotate() {
+				-webkit-transform: rotateY(-30deg);
+				transform: rotateY(-30deg);
+			}
+			$spacer: 20px; 			// standard space between slots
+			$slot1Margin: -230px; 	// left margin of leftmost slot
+			$slot1Index: -9; 		// z-index of leftmost slot
+			$slot1Size: 38px;		// height/width of leftmost slot
+			$slot11Margin: 0px; 	// left margin of the first slot that
+									// is right of the center slot
+			$slot11Index: -1;		// z-index of this slot
+			$slot11Size: 70px;		// height/width of leftmost slot
+			
+			// slots are positioned below:
+			@for $i from 1 through 9 {
+				.slot#{$i} {
+					@include center();
+					@include transition();
+					@include leftRotate();
+					margin-top: -17px - $i * 2px;
+					margin-left: $slot1Margin + ($i - 1) * $spacer;
+					z-index: $slot1Index + ($i - 1);
+					height: $slot1Size + ($i - 1) * 4px;
+					width: $slot1Size + ($i - 1) * 4px;
+				}
+				$j: $i + 10;
+				.slot#{$j} {
+					@include center();
+					@include transition();
+					@include rightRotate();
+					margin-top: -37px + $i * 2px;
+					margin-left: $slot11Margin + ($i - 1) * $spacer;
+					z-index: $slot11Index - ($i - 1);
+					height: $slot11Size - ($i - 1) * 4px;
+					width: $slot11Size - ($i - 1) * 4px;
+				}
+			}
+			.slot10 {
+				@include center();
+				@include transition();
+				margin-left: -45px;
+				margin-top: -45px;
+				z-index: 0;
+				-webkit-transform: translateZ(5px);
+				transform: translateZ(5px);
+				height: 90px;
+				width: 90px;
+			}
+		}
+//~~~~~-Spacer-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#Spacer2 {
+			height: 60px;
+			border-bottom: 2px dotted hsl(0, 0%, 10%);
+		}
+		
+/********* SLIDER #3 *********************************************************/
+//~~~~~-Header-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#Header3 {
+			border-top: 2px dotted hsl(0, 0%, 15%);
+			padding-top: 30px;
+			margin-bottom: 0px;
+			a {
+				color: #00ef25;
+                text-shadow: 1px 0px 10px #00ef25;
+			}
+			a:hover {
+				cursor: pointer;
+			}
+		}
+//~~~~~-Slider-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		#Slider3 {
+			position: relative;
+			height: 300px;
+			margin-top: 0px;
+			margin-bottom: 60px;
+			$perspective: 500px;
+			-webkit-perspective: $perspective;
+			perspective: $perspective;
+			-webkit-perspective-origin: top;
+			perspective-origin: top;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			
+			//	Each img element is given a .slot#{i} class
+			//	for some 0 <= j <= 9, which are positioned
+			// 	in a circle using the trigonometric functions defined above.
+			
+			// mixins used in slot styling:
+			@mixin initialPosition() {
+				position: absolute;
+				left: 50%;
+				top: 65%;	
+			}
+			
+			@mixin transition() {
+				-webkit-transition-duration: 0.4s;
+				transition-duration: 0.4s;
+			}
+			
+			// slots are positioned below:
+			@for $i from 0 through 9 {
+				.slot#{$i} {
+					@include initialPosition();
+					@include transition();
+					$size: 90px;
+					height: $size;
+					width: $size;
+					margin-left: -$size/2;
+					margin-top: -$size/2;
+					
+					$x: $perspective/3 * sin($i * 36deg);
+					$z: $perspective/3 * cos($i * 36deg) - $perspective/3;
+					@if $i < 3 {
+						-webkit-transform: translate3d($x, 0, $z) rotateY($i * 36deg);
+						transform: translate3d($x, 0, $z) rotateY($i * 36deg);
+					}
+					@else if $i < 8 {
+						-webkit-transform: translate3d($x, 0, $z) rotateY(($i * 36 - 180) * 1deg);
+						transform: translate3d($x, 0, $z) rotateY(($i * 36 - 180) * 1deg);
+					}
+					@else {
+						-webkit-transform: translate3d($x, 0, $z) rotateY(($i * 36 - 360) * 1deg);
+						transform: translate3d($x, 0, $z) rotateY(($i * 36 - 360) * 1deg);
+					}
+				}
+			} 
+		}
+	}
+}
